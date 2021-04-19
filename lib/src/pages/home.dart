@@ -12,78 +12,101 @@ class Home extends StatelessWidget {
           builder: (context) => pageTo, fullscreenDialog: true));
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomAppbar(pageTitle: ''),
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/images/wall.jpg'),
-            alignment: Alignment.topCenter,
-            fit: BoxFit.cover,
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        bool isMobile = constraints.maxWidth < 600;
+        return Scaffold(
+          appBar: CustomAppbar(pageTitle: ''),
+          body: Container(
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/wall.jpg'),
+                alignment: Alignment.topCenter,
+                fit: BoxFit.cover,
+              ),
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text(
+                  'The\nWood\nBand',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.white, fontSize: 60.0),
+                ),
+                SizedBox(height: 80.0),
+              ],
+            ),
+          ),
+          drawer: Drawer(
+            elevation: 5.0,
+            child: ListView(
+              padding: EdgeInsets.zero,
+              physics: NeverScrollableScrollPhysics(),
+              children: [
+                _buildDrawerHeader(),
+                SizedBox(height: 20.0),
+                _buildPageList(
+                  onTapLineup: () => _navigate(context, BandLineup()),
+                  onTapGallery: () => _navigate(context, Gallery()),
+                  onTapContact: () => _navigate(context, Contact()),
+                  onTapAbout: () => _navigate(context, About()),
+                ),
+                SizedBox(
+                  height: isMobile ? 80.0 : 160.0,
+                ),
+                Text(
+                  '©2021 Allrights Reserved.\nTheWoodBand.co',
+                  textAlign: TextAlign.center,
+                  style: TextStyler.white().copyWith(fontSize: 12.0),
+                )
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  DrawerHeader _buildDrawerHeader() {
+    return DrawerHeader(
+      decoration: BoxDecoration(color: Colors.white),
+      child: Padding(
+        padding: const EdgeInsets.only(top: 20.0),
+        child: Text(
+          'The\nWood\nBand',
+          textAlign: TextAlign.left,
+          style: TextStyle(
+            color: Colors.black87,
+            fontSize: 30.0,
+            fontWeight: FontWeight.bold,
           ),
         ),
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Text(
-              'The\nWood\nBand',
-              textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.white, fontSize: 60.0),
-            ),
-            SizedBox(height: 80.0),
-          ],
-        ),
       ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            DrawerHeader(
-              decoration: BoxDecoration(color: Colors.white),
-              child: Padding(
-                padding: const EdgeInsets.only(top: 20.0),
-                child: Text(
-                  'The\nWood\nBand',
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                    color: Colors.black87,
-                    fontSize: 30.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(height: 40.0),
-            ListTile(
-              title: Text('Band Line-up', style: TextStyler.white()),
-              onTap: () => _navigate(context, BandLineup()),
-            ),
-            ListTile(
-              title: Text('Gallery', style: TextStyler.white()),
-              onTap: () => _navigate(context, Gallery()),
-            ),
-            ListTile(
-              title: Text('Contact', style: TextStyler.white()),
-              onTap: () => _navigate(context, Contact()),
-            ),
-            ListTile(
-              title: Text(
-                'About',
-                style: TextStyler.white(),
-              ),
-              onTap: () => _navigate(context, About()),
-            ),
-            SizedBox(height: 260.0),
-            Text(
-              '©2021 Allrights Reserved.\nTheWoodBand.co',
-              textAlign: TextAlign.center,
-              style: TextStyler.white().copyWith(fontSize: 10.0),
-            )
-          ],
-        ),
-      ),
+    );
+  }
+
+  Column _buildPageList({
+    void Function()? onTapLineup,
+    void Function()? onTapGallery,
+    void Function()? onTapContact,
+    void Function()? onTapAbout,
+  }) {
+    return Column(
+      children: [
+        ListTile(
+            title: Text('Band Line-up', style: TextStyler.white()),
+            onTap: onTapLineup),
+        ListTile(
+            title: Text('Gallery', style: TextStyler.white()),
+            onTap: onTapGallery),
+        ListTile(
+            title: Text('Contact', style: TextStyler.white()),
+            onTap: onTapContact),
+        ListTile(
+            title: Text('About', style: TextStyler.white()), onTap: onTapAbout),
+      ],
     );
   }
 }

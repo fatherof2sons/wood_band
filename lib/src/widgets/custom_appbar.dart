@@ -23,7 +23,20 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
       centerTitle: true,
-      actions: [Text(pageTitle ?? '')],
+      actions: [
+        Padding(
+          padding: const EdgeInsets.only(
+            top: 20.0,
+            right: 14.0,
+          ),
+          child: Text(
+            pageTitle ?? '',
+            style: TextStyle(
+              fontFamily: 'Special Elite',
+            ),
+          ),
+        )
+      ],
     );
   }
 
