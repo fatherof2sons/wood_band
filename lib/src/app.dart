@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wood_band/src/pages/band_lineup.dart';
 import 'package:wood_band/src/pages/home.dart';
 
 class App extends StatelessWidget {
@@ -10,7 +11,7 @@ class App extends StatelessWidget {
               fontFamily: 'Special Elite',
             ),
       ),
-      home: Home(),
+      home: BandLineup(),
     );
   }
 }

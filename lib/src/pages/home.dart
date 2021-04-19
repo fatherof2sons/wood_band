@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:wood_band/src/pages/about.dart';
 import 'package:wood_band/src/pages/band_lineup.dart';
@@ -32,11 +33,11 @@ class Home extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Text(
-                  'The\nWood\nBand',
+                  'The\nWood',
                   textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.white, fontSize: 60.0),
+                  style: TextStyle(color: Colors.white, fontSize: 80.0),
                 ),
-                SizedBox(height: 80.0),
+                SizedBox(height: 100.0),
               ],
             ),
           ),
@@ -87,9 +88,7 @@ class Home extends StatelessWidget {
                     )
                   ],
                 ),
-                SizedBox(
-                  height: isMobile ? 30.0 : 160.0,
-                ),
+                SizedBox(height: isMobile ? 30.0 : 160.0),
                 Text(
                   '©2021 Allrights Reserved.\nTheWoodBand.co',
                   textAlign: TextAlign.center,
