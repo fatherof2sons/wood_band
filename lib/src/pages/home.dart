@@ -47,7 +47,7 @@ class Home extends StatelessWidget {
               physics: NeverScrollableScrollPhysics(),
               children: [
                 _buildDrawerHeader(),
-                SizedBox(height: 20.0),
+                SizedBox(height: 10.0),
                 _buildPageList(
                   onTapLineup: () => _navigate(context, BandLineup()),
                   onTapGallery: () => _navigate(context, Gallery()),
@@ -55,7 +55,7 @@ class Home extends StatelessWidget {
                   onTapAbout: () => _navigate(context, About()),
                 ),
                 SizedBox(
-                  height: isMobile ? 60.0 : 160.0,
+                  height: isMobile ? 30.0 : 160.0,
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -88,7 +88,7 @@ class Home extends StatelessWidget {
                   ],
                 ),
                 SizedBox(
-                  height: isMobile ? 60.0 : 160.0,
+                  height: isMobile ? 30.0 : 160.0,
                 ),
                 Text(
                   '©2021 Allrights Reserved.\nTheWoodBand.co',

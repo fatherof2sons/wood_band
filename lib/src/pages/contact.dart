@@ -10,53 +10,55 @@ class Contact extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppbar(pageTitle: id),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Card(
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 20.0),
-                child: _buildForm(),
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Card(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 8.0, horizontal: 20.0),
+                  child: _buildForm(),
+                ),
               ),
             ),
-          ),
-          SizedBox(
-            height: 40.0,
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Follow Us On',
-                style: TextStyler.white(),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(FontAwesomeIcons.youtube),
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(FontAwesomeIcons.facebook),
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(FontAwesomeIcons.instagram),
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(FontAwesomeIcons.twitter),
-                  ),
-                ],
-              )
-            ],
-          )
-        ],
+            SizedBox(
+              height: 20.0,
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Follow Us On',
+                  style: TextStyler.white(),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(FontAwesomeIcons.youtube),
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(FontAwesomeIcons.facebook),
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(FontAwesomeIcons.instagram),
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(FontAwesomeIcons.twitter),
+                    ),
+                  ],
+                )
+              ],
+            )
+          ],
+        ),
       ),
     );
   }

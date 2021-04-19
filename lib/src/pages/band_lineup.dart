@@ -34,7 +34,7 @@ class BandLineup extends StatelessWidget {
   Widget _buildMembersColumn(BuildContext context) {
     return Container(
       // height: MediaQuery.of(context).size.height,
-      padding: const EdgeInsets.symmetric(vertical: 100.0, horizontal: 20.0),
+      padding: const EdgeInsets.symmetric(vertical: 40.0, horizontal: 20.0),
       child: Card(
         color: Colors.black12,
         child: Padding(
@@ -45,7 +45,7 @@ class BandLineup extends StatelessWidget {
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   CircleAvatar(
                     backgroundColor: Colors.white,
@@ -56,7 +56,7 @@ class BandLineup extends StatelessWidget {
                   ),
                   SizedBox(width: 15.0),
                   Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         'Member Name',
@@ -69,11 +69,23 @@ class BandLineup extends StatelessWidget {
                         style: TextStyler.white().copyWith(
                             fontSize: 10.0, fontStyle: FontStyle.italic),
                       ),
+                      SizedBox(height: 16.0),
+                      Text(
+                        'Gear: ',
+                        style: TextStyler.white().copyWith(),
+                      ),
+                      SizedBox(height: 6.0),
+                      Text(
+                        '- Instrument brands',
+                        textAlign: TextAlign.left,
+                        style: TextStyler.white().copyWith(
+                            fontSize: 10.0, fontStyle: FontStyle.italic),
+                      ),
                     ],
                   ),
                 ],
               ),
-              SizedBox(height: 20.0),
+              SizedBox(height: 10.0),
               Column(
                 // crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -94,23 +106,6 @@ class BandLineup extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: 20.0),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Gear:',
-                        style: TextStyler.white()
-                            .copyWith(fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(height: 5.0),
-                      Text(
-                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-                        style: TextStyler.white()
-                            .copyWith(letterSpacing: 1.0, fontSize: 12.0),
-                      ),
-                    ],
-                  )
                 ],
               ),
             ],
