@@ -6,8 +6,10 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.dark().copyWith(
-          textTheme:
-              Theme.of(context).textTheme.apply(fontFamily: 'Special Elite')),
+        textTheme: Theme.of(context).textTheme.apply(
+              fontFamily: 'Special Elite',
+            ),
+      ),
       home: Home(),
     );
   }
