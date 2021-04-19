@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:wood_band/src/pages/about.dart';
 import 'package:wood_band/src/pages/band_lineup.dart';
 import 'package:wood_band/src/pages/contact.dart';
@@ -54,7 +55,40 @@ class Home extends StatelessWidget {
                   onTapAbout: () => _navigate(context, About()),
                 ),
                 SizedBox(
-                  height: isMobile ? 80.0 : 160.0,
+                  height: isMobile ? 60.0 : 160.0,
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Follow Us On',
+                      style: TextStyler.white(),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        IconButton(
+                          onPressed: () {},
+                          icon: Icon(FontAwesomeIcons.youtube),
+                        ),
+                        IconButton(
+                          onPressed: () {},
+                          icon: Icon(FontAwesomeIcons.facebook),
+                        ),
+                        IconButton(
+                          onPressed: () {},
+                          icon: Icon(FontAwesomeIcons.instagram),
+                        ),
+                        IconButton(
+                          onPressed: () {},
+                          icon: Icon(FontAwesomeIcons.twitter),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+                SizedBox(
+                  height: isMobile ? 60.0 : 160.0,
                 ),
                 Text(
                   '©2021 Allrights Reserved.\nTheWoodBand.co',
