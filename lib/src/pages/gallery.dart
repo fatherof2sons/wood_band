@@ -10,7 +10,7 @@ class Gallery extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppbar(pageTitle: id),
       body: Container(
-        padding: EdgeInsets.only(top: 30.0),
+        padding: EdgeInsets.only(top: 15.0),
         child: _buildPhotos(context),
       ),
     );
@@ -25,12 +25,15 @@ class Gallery extends StatelessWidget {
       mainAxisSpacing: 5.0,
       // Generate 100 widgets that display their index in the List.
       children: List.generate(50, (index) {
-        return Card(
-          color: Colors.white,
-          child: Center(
-            child: Text(
-              'photo $index',
-              style: Theme.of(context).textTheme.headline5,
+        return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Card(
+            color: Colors.white,
+            child: Center(
+              child: Text(
+                'photo $index',
+                style: Theme.of(context).textTheme.headline5,
+              ),
             ),
           ),
         );

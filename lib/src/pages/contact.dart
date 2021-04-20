@@ -14,49 +14,11 @@ class Contact extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Card(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 8.0, horizontal: 20.0),
-                  child: _buildForm(),
-                ),
-              ),
-            ),
+            _buildForm(),
             SizedBox(
               height: 20.0,
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Follow Us On',
-                  style: TextStyler.white(),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(FontAwesomeIcons.youtube),
-                    ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(FontAwesomeIcons.facebook),
-                    ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(FontAwesomeIcons.instagram),
-                    ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(FontAwesomeIcons.twitter),
-                    ),
-                  ],
-                )
-              ],
-            )
+            _buildFollowUs(),
           ],
         ),
       ),
@@ -64,57 +26,104 @@ class Contact extends StatelessWidget {
   }
 
   Widget _buildForm() {
+    final TextStyle _labelStyle = TextStyle(
+      color: Colors.black87,
+      fontSize: 12.0,
+    );
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Card(
+        color: Colors.white,
+        child: Padding(
+          padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 16.0),
+                child: Text(
+                  'Write Us',
+                  style: TextStyle(fontSize: 20.0),
+                ),
+              ),
+              TextField(
+                decoration: InputDecoration(
+                    labelText: 'From:',
+                    labelStyle: _labelStyle,
+                    fillColor: Colors.white,
+                    filled: true,
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(5.0)))),
+              ),
+              SizedBox(height: 16.0),
+              TextField(
+                decoration: InputDecoration(
+                    labelText: 'Senders Contact:',
+                    labelStyle: _labelStyle,
+                    fillColor: Colors.white,
+                    filled: true,
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(5.0)))),
+              ),
+              SizedBox(height: 16.0),
+              TextField(
+                maxLines: 8,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(5.0))),
+                  labelText: "Enter your message here:",
+                  labelStyle: _labelStyle,
+                  fillColor: Colors.white,
+                  filled: true,
+                ),
+              ),
+              SizedBox(height: 16.0),
+              MaterialButton(
+                onPressed: () {},
+                child: Padding(
+                  padding: const EdgeInsets.all(14.0),
+                  child: Text('Send'),
+                ),
+                color: Colors.black26,
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildFollowUs() {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
       mainAxisAlignment: MainAxisAlignment.center,
-      mainAxisSize: MainAxisSize.min,
       children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 16.0),
-          child: Text(
-            'Write Us',
-            style: TextStyler.white().copyWith(fontSize: 20.0),
-          ),
+        Text(
+          'Follow Us On',
+          textAlign: TextAlign.center,
+          style: TextStyler.white(),
         ),
-        TextField(
-          decoration: InputDecoration(
-              labelText: 'From:',
-              labelStyle: TextStyle(color: Colors.black87),
-              fillColor: Colors.white,
-              filled: true,
-              border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(5.0)))),
-        ),
-        SizedBox(height: 16.0),
-        TextField(
-          decoration: InputDecoration(
-              labelText: 'Senders Contact:',
-              labelStyle: TextStyle(color: Colors.black87),
-              fillColor: Colors.white,
-              filled: true,
-              border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(5.0)))),
-        ),
-        SizedBox(height: 16.0),
-        TextField(
-          maxLines: 8,
-          decoration: InputDecoration(
-            border: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(5.0))),
-            labelText: "Enter your message here:",
-            labelStyle: TextStyle(color: Colors.black87),
-            fillColor: Colors.white,
-            filled: true,
-          ),
-        ),
-        SizedBox(height: 16.0),
-        MaterialButton(
-          onPressed: () {},
-          child: Padding(
-            padding: const EdgeInsets.all(14.0),
-            child: Text('Send'),
-          ),
-          color: Colors.black26,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            IconButton(
+              onPressed: () {},
+              icon: Icon(FontAwesomeIcons.youtube),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: Icon(FontAwesomeIcons.facebook),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: Icon(FontAwesomeIcons.instagram),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: Icon(FontAwesomeIcons.twitter),
+            ),
+          ],
         )
       ],
     );

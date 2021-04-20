@@ -11,7 +11,7 @@ class App extends StatelessWidget {
               fontFamily: 'Special Elite',
             ),
       ),
-      home: BandLineup(),
+      home: Home(),
     );
   }
 }
