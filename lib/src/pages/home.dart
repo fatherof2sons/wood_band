@@ -110,7 +110,7 @@ class Home extends StatelessWidget {
           mainAxisAlignment:
               parentColmainAxisAlignment ?? MainAxisAlignment.end,
           children: [
-            // SizedBox(height: 80.0),
+            SizedBox(height: 20.0),
 
             Text(
               'The',
@@ -122,7 +122,7 @@ class Home extends StatelessWidget {
                 height: 0.0,
               ),
             ),
-            SizedBox(height: 40.0),
+            // SizedBox(height: 40.0),
             Text(
               'Wood',
               textAlign: mainTextAlign,
@@ -130,7 +130,7 @@ class Home extends StatelessWidget {
                 color: mainTextColor,
                 fontSize: mainTextFontsize,
                 fontFamily: mainTextFontfamily,
-                height: -0.1,
+                height: 0.0,
               ),
             ),
             SizedBox(height: 140.0),
