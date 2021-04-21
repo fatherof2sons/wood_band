@@ -9,6 +9,7 @@ class Contact extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[900],
       appBar: CustomAppbar(pageTitle: id),
       body: SingleChildScrollView(
         child: Column(
@@ -30,6 +31,12 @@ class Contact extends StatelessWidget {
       color: Colors.black87,
       fontSize: 12.0,
     );
+
+    final InputBorder _inputBorder = OutlineInputBorder(
+        borderSide: BorderSide(
+      color: Colors.black12,
+      width: 2.0,
+    ));
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Card(
@@ -45,15 +52,16 @@ class Contact extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                 child: Text(
                   'Write Us',
-                  style: TextStyle(fontSize: 20.0),
+                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
                 ),
               ),
               TextField(
                 decoration: InputDecoration(
                     labelText: 'From:',
                     labelStyle: _labelStyle,
-                    fillColor: Colors.white,
+                    fillColor: Colors.grey[200],
                     filled: true,
+                    enabledBorder: _inputBorder,
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(5.0)))),
               ),
@@ -64,13 +72,15 @@ class Contact extends StatelessWidget {
                     labelStyle: _labelStyle,
                     fillColor: Colors.white,
                     filled: true,
+                    enabledBorder: _inputBorder,
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(5.0)))),
               ),
               SizedBox(height: 16.0),
               TextField(
-                maxLines: 8,
+                maxLines: 6,
                 decoration: InputDecoration(
+                  enabledBorder: _inputBorder,
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(5.0))),
                   labelText: "Enter your message here:",
@@ -86,7 +96,7 @@ class Contact extends StatelessWidget {
                   padding: const EdgeInsets.all(14.0),
                   child: Text('Send'),
                 ),
-                color: Colors.black26,
+                color: Colors.black87,
               )
             ],
           ),

@@ -17,106 +17,224 @@ class Home extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         bool isMobile = constraints.maxWidth < 600;
-        return Scaffold(
-          appBar: CustomAppbar(pageTitle: ''),
-          body: Container(
-            width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/images/wall.jpg'),
-                alignment: Alignment.topCenter,
-                fit: BoxFit.cover,
-              ),
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(
-                  'The\nWood',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.white, fontSize: 80.0),
-                ),
-                SizedBox(height: 100.0),
-              ],
-            ),
-          ),
-          drawer: Drawer(
-            elevation: 5.0,
-            child: ListView(
-              padding: EdgeInsets.zero,
-              physics: NeverScrollableScrollPhysics(),
-              children: [
-                _buildDrawerHeader(),
-                SizedBox(height: 10.0),
-                _buildPageList(
-                  onTapLineup: () => _navigate(context, BandLineup()),
-                  onTapGallery: () => _navigate(context, Gallery()),
-                  onTapContact: () => _navigate(context, Contact()),
-                  onTapAbout: () => _navigate(context, About()),
-                ),
-                SizedBox(
-                  height: isMobile ? 30.0 : 160.0,
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Follow Us On',
-                      style: TextStyler.white(),
+        return _buildContent(
+          appBar: isMobile
+              ? CustomAppbar(pageTitle: '')
+              : AppBar(
+                  title: Text(
+                    'W',
+                    style: TextStyle(
+                      fontFamily: 'Stick',
+                      fontSize: 40.0,
+                      fontWeight: FontWeight.bold,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        IconButton(
-                          onPressed: () {},
-                          icon: Icon(FontAwesomeIcons.youtube),
-                        ),
-                        IconButton(
-                          onPressed: () {},
-                          icon: Icon(FontAwesomeIcons.facebook),
-                        ),
-                        IconButton(
-                          onPressed: () {},
-                          icon: Icon(FontAwesomeIcons.instagram),
-                        ),
-                        IconButton(
-                          onPressed: () {},
-                          icon: Icon(FontAwesomeIcons.twitter),
-                        ),
-                      ],
-                    )
+                  ),
+                  actions: [
+                    TextButton(
+                        child: Text('Band Line-up', style: TextStyler.white()),
+                        onPressed: () => _navigate(context, BandLineup())),
+                    TextButton(
+                        child: Text('Gallery', style: TextStyler.white()),
+                        onPressed: () => _navigate(context, Gallery())),
+                    TextButton(
+                        child: Text('Contact', style: TextStyler.white()),
+                        onPressed: () => _navigate(context, Contact())),
+                    TextButton(
+                        child: Text('About', style: TextStyler.white()),
+                        onPressed: () => _navigate(context, About())),
                   ],
                 ),
-                SizedBox(height: isMobile ? 30.0 : 160.0),
-                Text(
-                  '©2021 Allrights Reserved.\nTheWoodBand.co',
-                  textAlign: TextAlign.center,
-                  style: TextStyler.white().copyWith(fontSize: 12.0),
-                )
-              ],
-            ),
+          data: Theme.of(context).copyWith(
+            canvasColor: Colors.black87,
           ),
+          pageBodyWidth: MediaQuery.of(context).size.width,
+          backgroundImage: 'assets/images/wall.jpg',
+          boxFit: BoxFit.cover,
+          mainTextFontfamily: 'Stick',
+          mainTextAlign: TextAlign.left,
+          mainTextColor: Colors.white,
+          mainTextFontsize: isMobile ? 80.0 : 100.0,
+          heightBetweenPagesAndFollowUs: 30.0,
+          heightBetweenFollowUsAndBottomText: 30.0,
+          onTapBandMembersPage: () => _navigate(context, BandLineup()),
+          onTapGalleryPage: () => _navigate(context, Gallery()),
+          onTapContactPage: () => _navigate(context, Contact()),
+          onTapAboutPage: () => _navigate(context, About()),
+          onTapIconYoutube: () {},
+          onTapIconFb: () {},
+          onTapIconInstagram: () {},
+          onTapIconTwitter: () {},
         );
       },
     );
   }
 
-  DrawerHeader _buildDrawerHeader() {
-    return DrawerHeader(
-      decoration: BoxDecoration(color: Colors.white),
-      child: Padding(
-        padding: const EdgeInsets.only(top: 20.0),
-        child: Text(
-          'The\nWood\nBand',
-          textAlign: TextAlign.left,
-          style: TextStyle(
-            color: Colors.black87,
-            fontSize: 30.0,
-            fontWeight: FontWeight.bold,
+  Widget _buildContent({
+    ThemeData? data,
+    @required double? pageBodyWidth,
+    @required BoxFit? boxFit,
+    @required String? backgroundImage,
+    PreferredSizeWidget? appBar,
+    MainAxisAlignment? parentColmainAxisAlignment,
+    MainAxisSize? parentColMainAxisSize,
+    @required TextAlign? mainTextAlign,
+    @required String? mainTextFontfamily,
+    @required Color? mainTextColor,
+    @required double? mainTextFontsize,
+    @required double? heightBetweenPagesAndFollowUs,
+    @required double? heightBetweenFollowUsAndBottomText,
+    @required void Function()? onTapBandMembersPage,
+    @required void Function()? onTapGalleryPage,
+    @required void Function()? onTapContactPage,
+    @required void Function()? onTapAboutPage,
+    @required void Function()? onTapIconYoutube,
+    @required void Function()? onTapIconFb,
+    @required void Function()? onTapIconInstagram,
+    @required void Function()? onTapIconTwitter,
+  }) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+      appBar: appBar,
+      body: Container(
+        width: pageBodyWidth,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(backgroundImage ?? 'assets/images/wall.jpg'),
+            alignment: Alignment.topCenter,
+            fit: boxFit,
+            colorFilter: ColorFilter.srgbToLinearGamma(),
+          ),
+        ),
+        child: Column(
+          mainAxisSize: parentColMainAxisSize ?? MainAxisSize.max,
+          mainAxisAlignment:
+              parentColmainAxisAlignment ?? MainAxisAlignment.end,
+          children: [
+            // SizedBox(height: 80.0),
+
+            Text(
+              'The',
+              textAlign: mainTextAlign,
+              style: TextStyle(
+                color: mainTextColor,
+                fontSize: mainTextFontsize,
+                fontFamily: mainTextFontfamily,
+                height: 0.0,
+              ),
+            ),
+            SizedBox(height: 40.0),
+            Text(
+              'Wood',
+              textAlign: mainTextAlign,
+              style: TextStyle(
+                color: mainTextColor,
+                fontSize: mainTextFontsize,
+                fontFamily: mainTextFontfamily,
+                height: -0.1,
+              ),
+            ),
+            SizedBox(height: 140.0),
+          ],
+        ),
+      ),
+      drawer: Theme(
+        data: data ?? ThemeData(),
+        child: Drawer(
+          elevation: 5.0,
+          child: ListView(
+            padding: EdgeInsets.zero,
+            physics: NeverScrollableScrollPhysics(),
+            children: [
+              _buildDrawerHeader(
+                onTapIconFb: onTapIconFb,
+                onTapIconInstagram: onTapIconInstagram,
+                onTapIconTwitter: onTapIconTwitter,
+                onTapIconYoutube: onTapIconYoutube,
+              ),
+              SizedBox(height: 10.0),
+              _buildPageList(
+                onTapLineup: onTapBandMembersPage,
+                onTapGallery: onTapGalleryPage,
+                onTapContact: onTapContactPage,
+                onTapAbout: onTapAboutPage,
+              ),
+              SizedBox(
+                height: heightBetweenPagesAndFollowUs,
+              ),
+              SizedBox(height: heightBetweenFollowUsAndBottomText),
+              Text(
+                '©2021 Allrights Reserved.\nTheWoodBand.co',
+                textAlign: TextAlign.center,
+                style: TextStyler.white().copyWith(fontSize: 12.0),
+              )
+            ],
           ),
         ),
       ),
+    );
+  }
+
+  DrawerHeader _buildDrawerHeader({
+    @required void Function()? onTapIconYoutube,
+    @required void Function()? onTapIconFb,
+    @required void Function()? onTapIconInstagram,
+    @required void Function()? onTapIconTwitter,
+  }) {
+    return DrawerHeader(
+      decoration: BoxDecoration(color: Colors.white),
+      child: Padding(
+          padding: const EdgeInsets.only(top: 20.0),
+          child: Column(
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    height: 20.0,
+                  ),
+                  Text(
+                    'Follow Us On',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      IconButton(
+                        onPressed: onTapIconYoutube,
+                        icon: Icon(
+                          FontAwesomeIcons.youtube,
+                          color: Colors.black87,
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: onTapIconFb,
+                        icon: Icon(
+                          FontAwesomeIcons.facebook,
+                          color: Colors.black87,
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: onTapIconInstagram,
+                        icon: Icon(
+                          FontAwesomeIcons.instagram,
+                          color: Colors.black87,
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: onTapIconTwitter,
+                        icon: Icon(
+                          FontAwesomeIcons.twitter,
+                          color: Colors.black87,
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            ],
+          )),
     );
   }
 

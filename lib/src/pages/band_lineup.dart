@@ -14,7 +14,7 @@ class BandLineup extends StatelessWidget {
             isMobile ? Colors.grey[900] : Colors.white;
 
         return Scaffold(
-          backgroundColor: scaffoldBgColor ?? Colors.black,
+          backgroundColor: scaffoldBgColor ?? Colors.grey,
           appBar: CustomAppbar(
             pageTitle: id,
           ),
@@ -54,7 +54,7 @@ class BandLineup extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.zero,
         ),
-        color: isMobile ? Colors.grey[900] : Colors.grey[900],
+        color: isMobile ? Colors.black87 : Colors.grey[900],
         child: Padding(
           padding: EdgeInsets.symmetric(
             vertical: isMobile ? 22.0 : 38.0,
@@ -140,7 +140,7 @@ class BandLineup extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(
         vertical: mobileNotNull ? 8.0 : 16.0,
-        horizontal: mobileNotNull ? 30.0 : 60.0,
+        horizontal: mobileNotNull ? 4.0 : 60.0,
       ),
       child: Text(
         bio ??

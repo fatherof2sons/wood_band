@@ -68,6 +68,9 @@ flutter:
     - family: Special Elite
       fonts:
         - asset: assets/fonts/SpecialElite-Regular.ttf
+    - family: Stick
+      fonts:
+        - asset: assets/fonts/Stick-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

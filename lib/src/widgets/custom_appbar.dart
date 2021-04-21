@@ -10,13 +10,14 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      backgroundColor: Colors.black87,
       elevation: 8.0,
       title: Padding(
-        padding: const EdgeInsets.only(top: 9.0),
+        padding: const EdgeInsets.all(12.0),
         child: Text(
           'W',
           style: TextStyle(
-            fontFamily: 'Special Elite',
+            fontFamily: 'Stick',
             fontSize: 40.0,
             fontWeight: FontWeight.bold,
           ),
@@ -32,7 +33,7 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
           child: Text(
             pageTitle ?? '',
             style: TextStyle(
-              fontFamily: 'Special Elite',
+              fontFamily: 'Stick',
             ),
           ),
         )
@@ -41,5 +42,5 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(50.0);
+  Size get preferredSize => Size.fromHeight(55.0);
 }
