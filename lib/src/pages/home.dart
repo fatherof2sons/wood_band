@@ -7,11 +7,26 @@ import 'package:wood_band/src/pages/contact.dart';
 import 'package:wood_band/src/pages/gallery.dart';
 import 'package:wood_band/src/services/textstyler.dart';
 import 'package:wood_band/src/widgets/custom_appbar.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Home extends StatelessWidget {
+  final String _urlYoutube = 'https://www.youtube.com/user/Timily555/videos';
+  final String _urlFb = 'https://www.facebook.com/thewood.mv';
+  final String _urlInstagram = 'https://www.instagram.com/thewood.mv/?hl=en';
+
+  // void _launchURL(String url) async {
+  //   if (await canLaunch(url)) {
+  //     await launch(url);
+  //   } else {
+  //     throw 'Could not lauch $url';
+  //   }
+  // }
+
   void _navigate(BuildContext context, Widget pageTo) =>
-      Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => pageTo, fullscreenDialog: true));
+      Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => pageTo, fullscreenDialog: true),
+      );
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
@@ -133,13 +148,12 @@ class Home extends StatelessWidget {
                     color: mainTextColor,
                     fontSize: mainTextFontsize,
                     fontFamily: mainTextFontfamily,
-                    fontWeight: FontWeight.bold,
-                    height: 0.0,
+                    height: 0.8,
                   ),
                 ),
               ],
             ),
-            SizedBox(height: 140.0),
+            SizedBox(height: 100.0),
           ],
         ),
       ),

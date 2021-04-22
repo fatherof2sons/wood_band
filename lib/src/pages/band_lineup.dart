@@ -7,11 +7,32 @@ class BandLineup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> _buildChildren(
+      BuildContext context,
+      bool isMobile,
+    ) {
+      return [
+        SizedBox(
+          height: isMobile ? 30.0 : 60.0,
+        ),
+        _buildMembersColumn(context, isMobile),
+        Divider(),
+        _buildMembersColumn(context, isMobile),
+        Divider(),
+        _buildMembersColumn(context, isMobile),
+        Divider(),
+        _buildMembersColumn(context, isMobile),
+        Divider(),
+        _buildMembersColumn(context, isMobile),
+        Divider(),
+        _buildMembersColumn(context, isMobile),
+      ];
+    }
+
     return LayoutBuilder(
       builder: (context, constraints) {
         final bool isMobile = constraints.maxWidth < 600;
-        final Color? scaffoldBgColor =
-            isMobile ? Colors.grey[900] : Colors.white;
+        final Color? scaffoldBgColor = isMobile ? Colors.black26 : Colors.white;
 
         return Scaffold(
           backgroundColor: scaffoldBgColor ?? Colors.grey,
@@ -20,22 +41,7 @@ class BandLineup extends StatelessWidget {
           ),
           body: SingleChildScrollView(
             child: Column(
-              children: [
-                SizedBox(
-                  height: isMobile ? 40.0 : 60.0,
-                ),
-                _buildMembersColumn(context, isMobile),
-                Divider(),
-                _buildMembersColumn(context, isMobile),
-                Divider(),
-                _buildMembersColumn(context, isMobile),
-                Divider(),
-                _buildMembersColumn(context, isMobile),
-                Divider(),
-                _buildMembersColumn(context, isMobile),
-                Divider(),
-                _buildMembersColumn(context, isMobile),
-              ],
+              children: _buildChildren(context, isMobile),
             ),
           ),
         );
@@ -46,66 +52,50 @@ class BandLineup extends StatelessWidget {
   Widget _buildMembersColumn(BuildContext context, bool isMobile) {
     return Padding(
       padding: EdgeInsets.symmetric(
-        vertical: isMobile ? 16.0 : 60.0,
+        vertical: isMobile ? 40.0 : 60.0,
         horizontal: isMobile ? 16.0 : 220.0,
       ),
-      child: Card(
-        elevation: 16.0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.zero,
-        ),
-        color: isMobile ? Colors.black87 : Colors.grey[900],
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            vertical: isMobile ? 22.0 : 38.0,
-            horizontal: isMobile ? 32.0 : 180.0,
-          ),
-          child: Column(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Column(
+            mainAxisAlignment: isMobile
+                ? MainAxisAlignment.center
+                : MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Row(
-                mainAxisAlignment: isMobile
-                    ? MainAxisAlignment.center
-                    : MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  CircleAvatar(
-                    backgroundColor: Colors.white,
-                    radius: isMobile ? 60.0 : 120.0,
-                    child: Placeholder(
-                      color: Colors.grey.shade600,
-                    ),
-                  ),
-                  SizedBox(
-                    width: isMobile ? 15.0 : 30.0,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      _memberInfo(isMobile: isMobile),
-                      SizedBox(
-                        height: isMobile ? 24.0 : 30.0,
-                      ),
-                      _memberInfo(
-                          title: 'Gear',
-                          sub: '- Instrument',
-                          isMobile: isMobile),
-                    ],
-                  ),
-                ],
+              CircleAvatar(
+                backgroundColor: Colors.white,
+                radius: isMobile ? 100.0 : 120.0,
+                child: Placeholder(
+                  color: Colors.grey.shade600,
+                ),
               ),
-              Column(
-                // crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(height: 20.0),
-                  _memberBio(isMobile: isMobile),
-                ],
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    _memberInfo(isMobile: isMobile),
+                    SizedBox(width: 14.0),
+                    _memberInfo(
+                        title: 'Gear', sub: '- Instrument', isMobile: isMobile),
+                  ],
+                ),
               ),
             ],
           ),
-        ),
+          Column(
+            // crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 20.0),
+              _memberBio(isMobile: isMobile),
+            ],
+          ),
+        ],
       ),
     );
   }
@@ -113,22 +103,17 @@ class BandLineup extends StatelessWidget {
   Widget _memberInfo({String? title, String? sub, bool? isMobile}) {
     bool mobileNotNull = isMobile ?? true;
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           title ?? 'Member Name',
           style: TextStyler.white()
               .copyWith(fontSize: mobileNotNull ? 16.0 : 24.0),
         ),
-        Padding(
-          padding: const EdgeInsets.only(top: 8.0),
-          child: Text(
-            sub ?? '- Position',
-            textAlign: TextAlign.left,
-            style: TextStyler.white().copyWith(
-                fontSize: mobileNotNull ? 10.0 : 16.0,
-                fontStyle: FontStyle.italic),
-          ),
+        Text(
+          sub ?? '- Position',
+          style: TextStyler.white().copyWith(
+              fontSize: mobileNotNull ? 10.0 : 16.0,
+              fontStyle: FontStyle.italic),
         ),
       ],
     );
