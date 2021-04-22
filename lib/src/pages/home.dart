@@ -50,10 +50,10 @@ class Home extends StatelessWidget {
           pageBodyWidth: MediaQuery.of(context).size.width,
           backgroundImage: 'assets/images/wall.jpg',
           boxFit: BoxFit.cover,
-          mainTextFontfamily: 'Stick',
+          mainTextFontfamily: 'Special Elite',
           mainTextAlign: TextAlign.left,
           mainTextColor: Colors.white,
-          mainTextFontsize: isMobile ? 80.0 : 100.0,
+          mainTextFontsize: 100.0,
           heightBetweenPagesAndFollowUs: 30.0,
           heightBetweenFollowUsAndBottomText: 30.0,
           onTapBandMembersPage: () => _navigate(context, BandLineup()),
@@ -109,29 +109,35 @@ class Home extends StatelessWidget {
           mainAxisSize: parentColMainAxisSize ?? MainAxisSize.max,
           mainAxisAlignment:
               parentColmainAxisAlignment ?? MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(height: 20.0),
-
-            Text(
-              'The',
-              textAlign: mainTextAlign,
-              style: TextStyle(
-                color: mainTextColor,
-                fontSize: mainTextFontsize,
-                fontFamily: mainTextFontfamily,
-                height: 0.0,
-              ),
-            ),
-            // SizedBox(height: 40.0),
-            Text(
-              'Wood',
-              textAlign: mainTextAlign,
-              style: TextStyle(
-                color: mainTextColor,
-                fontSize: mainTextFontsize,
-                fontFamily: mainTextFontfamily,
-                height: 0.0,
-              ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'The',
+                  textAlign: mainTextAlign,
+                  style: TextStyle(
+                    color: mainTextColor,
+                    fontSize: 18.0,
+                    fontFamily: mainTextFontfamily,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                // SizedBox(height: 40.0),
+                Text(
+                  'Wood',
+                  textAlign: mainTextAlign,
+                  style: TextStyle(
+                    color: mainTextColor,
+                    fontSize: mainTextFontsize,
+                    fontFamily: mainTextFontfamily,
+                    fontWeight: FontWeight.bold,
+                    height: 0.0,
+                  ),
+                ),
+              ],
             ),
             SizedBox(height: 140.0),
           ],

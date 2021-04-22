@@ -9,15 +9,16 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final String _ffamily = 'Special Elite';
     return AppBar(
       backgroundColor: Colors.black87,
       elevation: 8.0,
       title: Padding(
-        padding: const EdgeInsets.all(12.0),
+        padding: const EdgeInsets.only(top: 12.0),
         child: Text(
           'W',
           style: TextStyle(
-            fontFamily: 'Stick',
+            fontFamily: _ffamily,
             fontSize: 40.0,
             fontWeight: FontWeight.bold,
           ),
@@ -33,7 +34,7 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
           child: Text(
             pageTitle ?? '',
             style: TextStyle(
-              fontFamily: 'Stick',
+              fontFamily: _ffamily,
             ),
           ),
         )

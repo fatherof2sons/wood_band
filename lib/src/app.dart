@@ -7,7 +7,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData.dark().copyWith(
         textTheme: Theme.of(context).textTheme.apply(
-              fontFamily: 'Stick',
+              fontFamily: 'Special Elite',
             ),
       ),
       home: Home(),
