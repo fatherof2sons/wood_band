@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:wood_band/src/pages/home/home.dart';
-import 'package:wood_band/src/pages/members/members.dart';
 
 class App extends StatelessWidget {
   @override

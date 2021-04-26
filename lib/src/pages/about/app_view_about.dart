@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:wood_band/src/services/textstyler.dart';
 
 class AppViewAbout extends StatelessWidget {
   @override

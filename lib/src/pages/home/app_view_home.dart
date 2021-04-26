@@ -1,6 +1,7 @@
 import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:wood_band/src/widgets/bottom_co.dart';
 import 'package:wood_band/src/widgets/main_text.dart';
@@ -39,7 +40,7 @@ class _AppViewHomeState extends State<AppViewHome> {
 
   void _seekToSec(double value) {
     Duration newPos = Duration(seconds: value.toInt());
-    setState(() => _player?.seek(newPos));
+    _player?.seek(newPos);
   }
 
   @override
@@ -128,13 +129,18 @@ class _AppViewHomeState extends State<AppViewHome> {
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            !isPlaying ? 'Listen us' : 'Live at Bandos Maldives 2019',
+            !isPlaying
+                ? 'Tap to Listen us Live'
+                : 'Recorded live at\nBandos Maldives 2019',
+            textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.white,
-              fontSize: 13.0,
-              fontWeight: FontWeight.w200,
+              fontSize: 16.0,
+              fontWeight: FontWeight.w400,
+              height: 1.3,
             ),
           ),
+          SizedBox(height: 10.0),
           IconButton(
             onPressed: () {
               if (!isPlaying) {
@@ -154,8 +160,10 @@ class _AppViewHomeState extends State<AppViewHome> {
             icon: Icon(
               playBtn,
               color: Colors.white,
+              size: 40.0,
             ),
           ),
+          SizedBox(height: 10.0),
           Opacity(opacity: !isPlaying ? 0.0 : 1.0, child: _slider())
         ],
       ),

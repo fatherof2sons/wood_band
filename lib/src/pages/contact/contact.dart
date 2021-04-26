@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:wood_band/src/services/textstyler.dart';
-import 'package:wood_band/src/widgets/custom_appbar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Contact extends StatelessWidget {

@@ -3,6 +3,19 @@ import 'package:flutter/material.dart';
 class Gallery extends StatelessWidget {
   static String id = 'Gallery';
 
+  final List<String> _images = [
+    'assets/images/image01.jpg',
+    'assets/images/image02.jpg',
+    'assets/images/image03.jpg',
+    'assets/images/image04.jpg',
+    'assets/images/image05.jpg',
+    'assets/images/image06.jpg',
+    'assets/images/image07.jpg',
+    'assets/images/image08.jpg',
+    'assets/images/image09.jpg',
+    'assets/images/image10.jpg',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,23 +36,57 @@ class Gallery extends StatelessWidget {
       // Create a grid with 2 columns. If you change the scrollDirection to
       // horizontal, this produces 2 rows.
       crossAxisCount: 2,
-      crossAxisSpacing: 5.0,
-      mainAxisSpacing: 5.0,
+      crossAxisSpacing: 3.0,
+      mainAxisSpacing: 3.0,
       // Generate 100 widgets that display their index in the List.
-      children: List.generate(50, (index) {
+      children: List.generate(_images.length, (index) {
         return Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Card(
-            color: Colors.white,
-            child: Center(
-              child: Text(
-                'photo $index',
-                style: Theme.of(context).textTheme.headline5,
+          padding: const EdgeInsets.all(3.0),
+          child: GestureDetector(
+            child: Hero(
+              tag: 'assets/images/image$index.jpg',
+              child: Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(_images[index]),
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
             ),
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                fullscreenDialog: true,
+                builder: (context) => Show(
+                      img: _images[index],
+                    ))),
           ),
         );
       }),
+    );
+  }
+}
+
+class Show extends StatelessWidget {
+  const Show({Key? key, @required this.img}) : super(key: key);
+  final String? img;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      child: Hero(
+        tag: '$img',
+        child: Expanded(
+          child: Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('$img'),
+                fit: BoxFit.fitWidth,
+              ),
+            ),
+          ),
+        ),
+      ),
+      onTap: () => Navigator.of(context).pop(),
     );
   }
 }

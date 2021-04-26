@@ -62,7 +62,6 @@ class AppViewMembers extends StatelessWidget {
     String? name,
     String? position,
   }) {
-    final TextStyle _style = TextStyle(color: Colors.white);
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 12.0),
       child: Column(
