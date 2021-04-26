@@ -101,6 +101,7 @@ class AppViewMembers extends StatelessWidget {
           SizedBox(height: 20.0),
           Text(
             "Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen boo",
+            textAlign: TextAlign.justify,
             style: TextStyle(color: Colors.white, height: 1.2, fontSize: 16.0),
           ),
           SizedBox(height: 40.0),

@@ -44,21 +44,27 @@ class Gallery extends StatelessWidget {
           padding: const EdgeInsets.all(3.0),
           child: GestureDetector(
             child: Hero(
-              tag: 'assets/images/image$index.jpg',
+              tag: index.toString(),
               child: Container(
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage(_images[index]),
+                    colorFilter:
+                        ColorFilter.mode(Colors.black, BlendMode.saturation),
                     fit: BoxFit.cover,
                   ),
                 ),
               ),
             ),
-            onTap: () => Navigator.of(context).push(MaterialPageRoute(
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute(
                 fullscreenDialog: true,
                 builder: (context) => Show(
-                      img: _images[index],
-                    ))),
+                  img: _images[index],
+                  index: index,
+                ),
+              ),
+            ),
           ),
         );
       }),
@@ -67,14 +73,19 @@ class Gallery extends StatelessWidget {
 }
 
 class Show extends StatelessWidget {
-  const Show({Key? key, @required this.img}) : super(key: key);
+  const Show({
+    Key? key,
+    @required this.img,
+    @required this.index,
+  }) : super(key: key);
   final String? img;
+  final int? index;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       child: Hero(
-        tag: '$img',
+        tag: index.toString(),
         child: Expanded(
           child: Container(
             decoration: BoxDecoration(
