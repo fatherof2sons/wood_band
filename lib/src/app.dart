@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:wood_band/src/pages/band_lineup.dart';
-import 'package:wood_band/src/pages/home.dart';
+import 'package:wood_band/src/pages/home/home.dart';
+import 'package:wood_band/src/pages/members/members.dart';
 
 class App extends StatelessWidget {
   @override
@@ -10,6 +10,7 @@ class App extends StatelessWidget {
         textTheme: Theme.of(context).textTheme.apply(
               fontFamily: 'Special Elite',
             ),
+        canvasColor: Colors.black87,
       ),
       home: Home(),
     );

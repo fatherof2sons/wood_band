@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:wood_band/src/widgets/custom_appbar.dart';
 
 class Gallery extends StatelessWidget {
   static String id = 'Gallery';
@@ -7,7 +6,11 @@ class Gallery extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppbar(pageTitle: id),
+      backgroundColor: Colors.black87,
+      appBar: AppBar(
+        backgroundColor: Colors.black87,
+        elevation: 0.0,
+      ),
       body: Container(
         padding: EdgeInsets.only(top: 15.0),
         child: _buildPhotos(context),

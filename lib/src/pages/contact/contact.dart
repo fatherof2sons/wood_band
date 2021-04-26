@@ -9,8 +9,10 @@ class Contact extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[900],
-      appBar: CustomAppbar(pageTitle: id),
+      backgroundColor: Colors.black87,
+      appBar: AppBar(
+        backgroundColor: Colors.black87,
+      ),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -51,7 +53,7 @@ class Contact extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                 child: Text(
-                  'Write Us',
+                  'Connect us',
                   style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
                 ),
               ),
@@ -59,7 +61,6 @@ class Contact extends StatelessWidget {
                 decoration: InputDecoration(
                     labelText: 'From:',
                     labelStyle: _labelStyle,
-                    fillColor: Colors.grey[200],
                     filled: true,
                     enabledBorder: _inputBorder,
                     border: OutlineInputBorder(
